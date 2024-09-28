@@ -12,4 +12,4 @@ app = Flask(__name__, template_folder='./src/view/templates')
 register_routes(app)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
