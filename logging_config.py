@@ -8,13 +8,13 @@ LOGGING_CONFIG = {
     'loggers': {
         LOGGER_NAME: {
             'handlers': ['file',],
-            'level': 'DEBUG',
+            'level': 'INFO',
             'propagate': True,
         },
     },
     'handlers': {
         'file': {
-            'level': 'DEBUG',
+            'level': 'INFO',
             'class': 'logging.FileHandler',
             'filename': f'./logs/{LOGGER_NAME}.log',
             'encoding': 'utf-8',

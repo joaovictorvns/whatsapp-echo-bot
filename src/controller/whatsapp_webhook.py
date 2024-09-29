@@ -145,9 +145,11 @@ def webhook():  # pylint: disable=inconsistent-return-statements
 
 def privacy_policy():
     """Returns to the privacy policy page."""
+    logger.info('Privacy policy page accessed.')
     return render_template('privacy_policy.html')
 
 
 def terms_of_service():
     """Returns to the terms of service page."""
+    logger.info('Terms of service page accessed.')
     return render_template('terms_of_service.html')
