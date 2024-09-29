@@ -1,5 +1,6 @@
 """Configures and runs the Flask application for the WhatsApp Echo Bot project."""
 
+import os
 import logging.config
 
 from flask import Flask
@@ -7,6 +8,9 @@ from werkzeug.middleware.proxy_fix import ProxyFix
 
 from logging_config import LOGGING_CONFIG
 from src.controller.whatsapp_webhook import register_routes
+
+if not os.path.exists('./logs'):
+    os.mkdir('./logs')
 
 logging.config.dictConfig(LOGGING_CONFIG)
 app = Flask(__name__, template_folder='./src/view/templates')
