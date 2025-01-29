@@ -1,0 +1,19 @@
+site_name: WhatsApp Echo Bot
+repo_url: https://github.com/joaovictorvns/whatsapp-echo-bot
+repo_name: joaovictorvns/whatsapp-echo-bot
+edit_uri: tree/main/docs
+
+theme:
+  name: material
+  language: pt-BR
+  logo: assets/logo-alt.svg
+  favicon: assets/favicon.png
+  highlightjs: true
+  hljs_languages:
+    - python
+
+markdown_extensions:
+  - attr_list
+
+extra_css:
+  - css/extra.css

@@ -1,0 +1,2 @@
+[MAIN]
+ignore-paths=.mypy_cache,.ruff_cache,.venv,docs,tests

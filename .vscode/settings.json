@@ -1,6 +1,0 @@
-{
-    "flake8.args": [
-        "--config=./config/.flake8"
-    ],
-    "python.analysis.autoImportCompletions": true
-}

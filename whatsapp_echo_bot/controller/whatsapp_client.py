@@ -1,22 +1,20 @@
-"""Module that defines the WhatsAppClient class to send messages and manage statuses via
-the WhatsApp API.
-"""
+"""Module that defines the WhatsAppClient class to send messages."""
 
 import json
 import logging
 
 import requests
 
-from logging_config import LOGGER_NAME
-
-logger = logging.getLogger(f'{LOGGER_NAME}.{__name__}')
+logger = logging.getLogger(__name__)
 
 
 class WhatsAppClient:
-    """Client for interacting with the WhatsApp API, sending messages and updating statuses."""
-    def __init__(self, api_token, phone_id) -> None:
+    """WhatsApp API client for sending messages and updating statuses."""
+
+    def __init__(self, base_url: str, api_version: str, api_token: str,
+                 phone_id: int) -> None:
         """Inicializa o cliente com o token da API e o ID do telefone."""
-        self.api_url = f'https://graph.facebook.com/v20.0/{phone_id}/messages'
+        self.api_url = f'{base_url}/{api_version}/{phone_id}/messages'
         self.headers = {
             'Authorization': f'Bearer {api_token}',
             'Content-Type': 'application/json'
@@ -42,7 +40,9 @@ class WhatsAppClient:
         )
 
         try:
-            response = requests.post(self.api_url, headers=self.headers, json=data, timeout=10)
+            response = requests.post(
+                self.api_url, headers=self.headers, json=data, timeout=10
+            )
             if response.ok:
                 logger.info(
                     '(%s) Received successful response with status code: %d',
@@ -51,7 +51,8 @@ class WhatsAppClient:
                 )
             else:
                 logger.warning(
-                    '(%s) Received non-successful response with status code: %d',
+                    ('(%s) Received non-successful response with status code: '
+                     '%d'),
                     self.__class__.__name__,
                     response.status_code
                 )
@@ -88,7 +89,9 @@ class WhatsAppClient:
         )
 
         try:
-            response = requests.post(self.api_url, headers=self.headers, json=data, timeout=10)
+            response = requests.post(
+                self.api_url, headers=self.headers, json=data, timeout=10
+            )
             if response.ok:
                 logger.info(
                     '(%s) Received successful response with status code: %d',
@@ -97,7 +100,8 @@ class WhatsAppClient:
                 )
             else:
                 logger.warning(
-                    '(%s) Received non-successful response with status code: %d',
+                    ('(%s) Received non-successful response with status code: '
+                     '%d'),
                     self.__class__.__name__,
                     response.status_code
                 )
